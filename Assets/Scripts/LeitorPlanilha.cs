@@ -30,7 +30,8 @@ public class LeitorPlanilha : MonoBehaviour
     public Text pesquisaNumero, nomeCancao, numeroCancao, nomeCantor;
     public string recebeNumero;
     string aspas;
-    public GameObject Canvas, telaMenu, nomeCancaoGO;
+    //public GameObject Canvas, telaMenu;
+    public GameObject nomeCancaoGO, getPicsGO;
     public InputField mainInputField;
     int hitCounter, hitCounterPlay, hitCounterTela;
     bool isPaused;
@@ -61,6 +62,7 @@ public class LeitorPlanilha : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) //funções de entrada de música
         {
+            getPicsGO.SetActive(true);
             recebeNumero = pesquisaNumero.text.ToString();
             if (System.IO.File.Exists(@"E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4"))
             {
@@ -85,12 +87,12 @@ public class LeitorPlanilha : MonoBehaviour
 
         if (videofile.isPlaying)
         {
-            telaMenu.SetActive(false);
+            //telaMenu.SetActive(false);
             hitCounterTela = 1;
         }
         if (!videofile.isPlaying && isPaused == false)
         {
-            telaMenu.SetActive(true);
+            //telaMenu.SetActive(true);
             if (hitCounterTela == 1)
             {
                 mainInputField.text = "";
@@ -130,7 +132,7 @@ public class LeitorPlanilha : MonoBehaviour
         {
             videofile.Stop();
             hitCounter = 0;
-            telaMenu.SetActive(true);
+            //telaMenu.SetActive(true);
             nomeCancao.text = "";
             mainInputField.text = "";
 
@@ -189,7 +191,7 @@ public class LeitorPlanilha : MonoBehaviour
     public void pause()
     {
         videofile.Pause();
-        telaMenu.SetActive(false);
+        //telaMenu.SetActive(false);
         isPaused = true;
     }
 
