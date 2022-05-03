@@ -19,15 +19,22 @@ public class GetSong : MonoBehaviour
     void Start()
     {
         albumCover.texture = Texture2D.blackTexture;
-        OnButtonGetMusicInfo();
+        //OnButtonGetMusicInfo();
     }
 
     // Update is called once per frame
     public void Update()
     {
-
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {
+            //string song = "meu%20lugar";
+            string song = searchSongName.text + " " + searchArtistName.text;
+            Uri.EscapeDataString(song);
+            //Uri.EscapeUriString(song);
+            StartCoroutine(findSong(song));
+        }
     }
-
+    /*
     public void OnButtonGetMusicInfo()
     {
         //string song = "meu%20lugar";
@@ -35,7 +42,7 @@ public class GetSong : MonoBehaviour
         Uri.EscapeDataString(song);
         //Uri.EscapeUriString(song);
         StartCoroutine(findSong(song));
-    }
+    }*/
 
     IEnumerator findSong(string song)
     {

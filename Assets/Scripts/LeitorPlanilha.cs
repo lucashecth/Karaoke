@@ -35,6 +35,8 @@ public class LeitorPlanilha : MonoBehaviour
     public InputField mainInputField;
     int hitCounter, hitCounterPlay, hitCounterTela;
     bool isPaused;
+    public List<string> musicasEmQueue;
+    public int quantasEmQueue;
     /*------------------------------------------------ public Text recebeCancaoTela;--------------------------------------------------*/
 
     public TextAsset planilha;
@@ -43,6 +45,7 @@ public class LeitorPlanilha : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        quantasEmQueue = 0;
         mainInputField.ActivateInputField();
         string[] data = planilha.text.Split('\n');
         for (int i = 1; i < data.Length - 1; i++)
@@ -72,7 +75,7 @@ public class LeitorPlanilha : MonoBehaviour
                 if (hitCounter == 1)
                 {
                     hitCounter = 0;
-                    digitaNumero();
+                    //digitaNumero();
 
                 }
 
@@ -164,7 +167,8 @@ public class LeitorPlanilha : MonoBehaviour
     public void digitaNumero()
     {
 
-        recebeNumero = pesquisaNumero.text.ToString();
+        recebeNumero = musicasEmQueue[0];
+        ReorganizarQueue();
 
         //Existe a música selecionada no HD?    
         // if (System.IO.File.Exists(@"E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4"))
@@ -195,6 +199,23 @@ public class LeitorPlanilha : MonoBehaviour
         isPaused = true;
     }
 
+    public void AdicionarMusicasEmQueue()
+    {
+        
+        musicasEmQueue[quantasEmQueue] = recebeNumero;
+        quantasEmQueue++;
+
+    }
+    public void ReorganizarQueue()
+    {
+        quantasEmQueue--;
+        //musicasEmQueue.RemoveAt(0);
+        musicasEmQueue[0] = musicasEmQueue[1];
+        musicasEmQueue[1] = musicasEmQueue[2];
+        musicasEmQueue[2] = musicasEmQueue[3];
+        musicasEmQueue[3] = musicasEmQueue[4];
+
+    }
 
 
 
