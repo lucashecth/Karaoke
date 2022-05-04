@@ -24,7 +24,7 @@ public class GetSong : MonoBehaviour
 
     // Update is called once per frame
     public void Update()
-    {
+    {/*
         if (Input.GetKey(KeyCode.KeypadEnter))
         {
             //string song = "meu%20lugar";
@@ -32,9 +32,15 @@ public class GetSong : MonoBehaviour
             Uri.EscapeDataString(song);
             //Uri.EscapeUriString(song);
             StartCoroutine(findSong(song));
-        }
+        }*/
     }
-    /*
+    public void SearchMusic()
+    {
+        string song = searchSongName.text + " " + searchArtistName.text;
+        Uri.EscapeDataString(song);
+        StartCoroutine(findSong(song));
+    }
+    
     public void OnButtonGetMusicInfo()
     {
         //string song = "meu%20lugar";
@@ -42,7 +48,7 @@ public class GetSong : MonoBehaviour
         Uri.EscapeDataString(song);
         //Uri.EscapeUriString(song);
         StartCoroutine(findSong(song));
-    }*/
+    }
 
     IEnumerator findSong(string song)
     {
@@ -50,8 +56,8 @@ public class GetSong : MonoBehaviour
         Debug.Log(songSearchURL);
 
         UnityWebRequest songInfoRequest = UnityWebRequest.Get(songSearchURL);
-        songInfoRequest.SetRequestHeader("Authorization", "Bearer 25SBZHJoLI80AH2u8fdOqNxIaOBc7xC7qJotF0SrCYIgCOvqC4G2kFJn-pH2AZrv ");
-
+        songInfoRequest.SetRequestHeader("Authorization", "Bearer 9Ovm7gjgYWsR4rcge4_sKRKBSwT8F-vzX1sQkDkPSQ98o38Ej79cR-SGum9F4Hb5 ");
+        //songInfoRequest.SetRequestHeader("Authorization", "Bearer 25SBZHJoLI80AH2u8fdOqNxIaOBc7xC7qJotF0SrCYIgCOvqC4G2kFJn-pH2AZrv ");
 
 
         yield return songInfoRequest.SendWebRequest();

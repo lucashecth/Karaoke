@@ -5,25 +5,15 @@ using UnityEngine.Video;
 
 public class QueueControl : MonoBehaviour
 {
-    public VideoPlayer videoPlayer;
+    public VideoPlayer vid;
     public LeitorPlanilha leitorPlanilha;
+    public GameObject menu;
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Start() { vid.loopPointReached += CheckOver; }
+
+    void CheckOver(UnityEngine.Video.VideoPlayer vp)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        videoPlayer.loopPointReached += EndReached;
-    }
-
-    void EndReached(UnityEngine.Video.VideoPlayer vp)
-    {
-        vp.playbackSpeed = vp.playbackSpeed / 10.0F;
-        Debug.Log("Terminou");
 
         if (leitorPlanilha.quantasEmQueue > 0)
         {
@@ -31,7 +21,9 @@ public class QueueControl : MonoBehaviour
         }
         else
         {
-            //retorna pro menu
+            menu.SetActive(true);
+            Debug.Log("Acabou a Queue");
         }
     }
+
 }
