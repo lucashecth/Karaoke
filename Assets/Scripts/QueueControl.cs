@@ -7,7 +7,7 @@ public class QueueControl : MonoBehaviour
 {
     public VideoPlayer vid;
     public LeitorPlanilha leitorPlanilha;
-    public GameObject menu;
+    public GameObject menu, hudInMusic;
 
 
     void Start() { vid.loopPointReached += CheckOver; }
@@ -21,6 +21,7 @@ public class QueueControl : MonoBehaviour
         }
         else
         {
+            hudInMusic.SetActive(false);
             menu.SetActive(true);
             Debug.Log("Acabou a Queue");
         }

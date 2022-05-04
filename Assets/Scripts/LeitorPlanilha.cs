@@ -37,6 +37,7 @@ public class LeitorPlanilha : MonoBehaviour
     bool isPaused;
     public List<string> musicasEmQueue;
     public int quantasEmQueue;
+    public configuration configuration;
     /*------------------------------------------------ public Text recebeCancaoTela;--------------------------------------------------*/
 
     public TextAsset planilha;
@@ -67,7 +68,9 @@ public class LeitorPlanilha : MonoBehaviour
         {
             getPicsGO.SetActive(true);
             recebeNumero = pesquisaNumero.text.ToString();
-            if (System.IO.File.Exists(@"E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4"))
+            Debug.Log(configuration.pathToMusics + recebeNumero);
+            if (System.IO.File.Exists(configuration.pathToMusics + recebeNumero + ".mp4"))
+            // if (System.IO.File.Exists(@"E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4"))
             {
 
                 NomeMusica();
@@ -84,7 +87,7 @@ public class LeitorPlanilha : MonoBehaviour
             }
             else
             {
-                nomeCancao.text = "<< CANÇÃO NÃO ENCONTRADA >>";
+                nomeCancao.text = "<< CANÇÃO NÃO ENCONTRADAAAA >>";
             }
         }
 
@@ -174,7 +177,7 @@ public class LeitorPlanilha : MonoBehaviour
         // if (System.IO.File.Exists(@"E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4"))
         //if (System.IO.File.Exists(@"/storage/0A5497D85497C53B/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4")) 
         //{
-        videofile.url = "E:/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4";
+        videofile.url = configuration.pathToMusics + recebeNumero + ".mp4";
         //telaMenu.SetActive(false);
         numeroCancao.text = "<" + recebeNumero + ">";
         //videofile.url = "/storage/0A5497D85497C53B/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4";
