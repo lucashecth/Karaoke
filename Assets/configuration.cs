@@ -19,7 +19,8 @@ public class configuration : MonoBehaviour
         //stockFilePath = "E:/Google Drive/Karaokê Completo - 31A/Karaokê Completo - 31A/";
         //pathtoMusicsPH.GetComponent<Text>().text = stockFilePath;
         //pathToMusics = stockFilePath;
-        pathtoMusicsPH.text = PlayerPrefs.GetString("pathToMusics");
+        Debug.Log(pathToMusics);
+        pathToMusics = PlayerPrefs.GetString("pathToMusics");
     }
 
     void Start()
@@ -30,6 +31,11 @@ public class configuration : MonoBehaviour
     {
         pathToMusics = pathToMusicsInput.text;
         PlayerPrefs.SetString("pathToMusics", pathToMusicsInput.text);
+        PlayerPrefs.Save();
+    }
+    public void QuitApp()
+    {
+        Application.Quit();
     }
 
     // Update is called once per frame
