@@ -10,6 +10,7 @@ public class GetSong : MonoBehaviour
     public RawImage albumCover, artistPhoto, Background;
     //public Text songNameTEXT, artistNameTEXT;
     public Text searchSongName, searchArtistName;
+    public LastSearched lastSearched;
 
 
     private readonly string baseSongURL = "http://api.genius.com/search?q=";
@@ -126,5 +127,7 @@ public class GetSong : MonoBehaviour
 
         artistPhoto.texture = DownloadHandlerTexture.GetContent(ArtistPicRequest);
         artistPhoto.texture.filterMode = FilterMode.Point;
+
+        lastSearched.OnNewSearch();
     }
 }

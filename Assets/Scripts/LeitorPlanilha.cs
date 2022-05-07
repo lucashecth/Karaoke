@@ -38,6 +38,7 @@ public class LeitorPlanilha : MonoBehaviour
     public List<string> musicasEmQueue;
     public int quantasEmQueue;
     public configuration configuration;
+    public Text testFilePath;
     /*------------------------------------------------ public Text recebeCancaoTela;--------------------------------------------------*/
 
     public TextAsset planilha;
@@ -178,6 +179,7 @@ public class LeitorPlanilha : MonoBehaviour
         //if (System.IO.File.Exists(@"/storage/0A5497D85497C53B/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4")) 
         //{
         videofile.url = configuration.pathToMusics + recebeNumero + ".mp4";
+        testFilePath.text = videofile.url;
         //telaMenu.SetActive(false);
         numeroCancao.text = "<" + recebeNumero + ">";
         //videofile.url = "/storage/0A5497D85497C53B/Google Drive/Karaokê Completo - 32A/Karaokê Completo - 32A/" + recebeNumero + ".mp4";
